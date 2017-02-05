@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Popular Movies</string>
+    <string name="api_key"></string>
+
+    <string name="error_message_network_failure">Could not establish a network connection.</string>
+
+</resources>
