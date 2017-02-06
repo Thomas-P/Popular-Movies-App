@@ -46,7 +46,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/md_padding"
-                android:text="Details"
+                android:text="@string/md_details"
                 android:textSize="@dimen/title_size"
                 android:textStyle="bold"/>
             <RelativeLayout
@@ -60,7 +60,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="start"
                     android:textSize="@dimen/text_size"
-                    android:text="Release date"
+                    android:text="@string/md_release"
                     android:textStyle="bold"/>
 
                 <!-- Amount -->
@@ -69,7 +69,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="end"
-                    android:text="1900-10-10"
                     android:textSize="@dimen/text_size"
                     />
             </RelativeLayout>
@@ -88,7 +87,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="start"
                     android:textSize="@dimen/text_size"
-                    android:text="Votes average:"
+                    android:text="@string/md_votes"
                     android:textStyle="bold"/>
 
                 <!-- Amount -->
@@ -97,7 +96,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="end"
-                    android:text="5.12"
                     android:textSize="@dimen/text_size"
                     />
             </RelativeLayout>

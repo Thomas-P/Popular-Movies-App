@@ -1,14 +1,15 @@
 package com.github.thomas_p.popularmoviesapp.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * Created by Thomas-P on 05.02.2017.
- */
 
-
-public class Movie implements Serializable {
+public class Movie implements Serializable, Parcelable {
     private static String PRE_POSTER_PATH = "http://image.tmdb.org/t/p/w185/";
     private boolean isAdult;
     private String posterPath;
@@ -16,11 +17,7 @@ public class Movie implements Serializable {
     private Date releaseDate;
     private Double voteAverage;
 
-
-
     private String title;
-
-
     private int id;
 
 
@@ -65,4 +62,31 @@ public class Movie implements Serializable {
     public Double getVoteAverage() {
         return  voteAverage;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    protected Movie(Parcel in) {
+        // not needed, while readSerializable
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeSerializable(this);
+    }
+
+
+    public static final Creator<Movie> CREATOR = new Creator<Movie>() {
+        @Override
+        public Movie createFromParcel(Parcel in) {
+            return (Movie) in.readSerializable();
+        }
+
+        @Override
+        public Movie[] newArray(int size) {
+            return new Movie[size];
+        }
+    };
 }

@@ -9,8 +9,11 @@ import android.widget.ImageView;
 import com.github.thomas_p.popularmoviesapp.R;
 import com.github.thomas_p.popularmoviesapp.models.Movie;
 import com.squareup.picasso.Picasso;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 
 public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.MovieListAdapterViewHolder> {
@@ -55,6 +58,20 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.Movi
     public void setMovieData(Movie[] movies) {
         movieListData.clear();
         Collections.addAll(movieListData, movies);
+        notifyDataSetChanged();
+    }
+
+    public void clear() {
+        movieListData.clear();
+        notifyDataSetChanged();
+    }
+
+    public ArrayList<Movie> getMovieListData() {
+        return movieListData;
+    }
+
+    public void setMovieListData(ArrayList<Movie> data) {
+        movieListData = data;
         notifyDataSetChanged();
     }
 

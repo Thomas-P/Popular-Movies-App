@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -49,10 +50,5 @@ public class MovieDetailActivity extends AppCompatActivity {
         mDetailImage = (ImageView) findViewById(R.id.md_image);
         mDetailImage.setContentDescription(movie.getTitle());
         Picasso.with(this).load(movie.getPoster()).into(mDetailImage);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        return super.onCreateOptionsMenu(menu);
     }
 }
