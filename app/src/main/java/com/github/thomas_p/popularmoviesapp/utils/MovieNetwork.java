@@ -14,6 +14,11 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 import java.util.Scanner;
 
 
@@ -97,14 +102,19 @@ public class MovieNetwork {
      * @return a Movie object
      * @throws JSONException
      */
-    private Movie fromJson(JSONObject json) throws JSONException {
+    private Movie fromJson(JSONObject json) throws JSONException, ParseException {
         String title = json.getString("title");
         int id = json.getInt("id");
-        String poster_path = "http://image.tmdb.org/t/p/w185/" + json.getString("poster_path");
+        String poster_path = json.getString("poster_path");
 
         // create movie object
         Movie resultMovie = new Movie(id, title, poster_path);
         // @todo extract other json
+        resultMovie.setOverview(json.getString("overview"));
+        String date = json.getString("release_date");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        resultMovie.setReleaseDate(dateFormat.parse(date));
+        resultMovie.setVoteAverage(json.getDouble("vote_average"));
         return resultMovie;
     }
 
@@ -122,7 +132,11 @@ public class MovieNetwork {
         for (int i = 0; i < jResultArray.length(); i++) {
             //
             JSONObject jsonMovieObject = jResultArray.getJSONObject(i);
-            resultMovies[i] = fromJson(jsonMovieObject);
+            try {
+                resultMovies[i] = fromJson(jsonMovieObject);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
 
         }
 

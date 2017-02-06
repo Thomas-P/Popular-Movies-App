@@ -1,16 +1,22 @@
 package com.github.thomas_p.popularmoviesapp.models;
 
+import java.io.Serializable;
+import java.util.Date;
+
 /**
  * Created by Thomas-P on 05.02.2017.
  */
 
 
-public class Movie {
+public class Movie implements Serializable {
     private static String PRE_POSTER_PATH = "http://image.tmdb.org/t/p/w185/";
     private boolean isAdult;
     private String posterPath;
     private String overview;
-    private String releaseDate;
+    private Date releaseDate;
+    private Double voteAverage;
+
+
 
     private String title;
 
@@ -33,6 +39,30 @@ public class Movie {
     }
 
     public String getPoster() {
-        return this.posterPath;
+        return PRE_POSTER_PATH + this.posterPath;
+    }
+
+    public void setOverview(String synopsis) {
+        overview = synopsis;
+    }
+
+    public String getOverview() {
+        return overview;
+    }
+
+    public void setReleaseDate(Date releaseDate) {
+        this.releaseDate = releaseDate;
+    }
+
+    public Date getReleaseDate() {
+        return releaseDate;
+    }
+
+    public void setVoteAverage(Double voteAverage) {
+        this.voteAverage = voteAverage;
+    }
+
+    public Double getVoteAverage() {
+        return  voteAverage;
     }
 }

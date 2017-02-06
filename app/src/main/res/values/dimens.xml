@@ -3,8 +3,15 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
+    <dimen name="md_padding">8dp</dimen>
+
+    <dimen name="title_size">22sp</dimen>
+    <dimen name="text_size">16sp</dimen>
+
     <dimen name="movie_list_height">320dp</dimen>
 
+
+    <dimen name="movie_detail_image_height">160dp</dimen>
 
     <integer name="gallery_columns">2</integer>
 </resources>

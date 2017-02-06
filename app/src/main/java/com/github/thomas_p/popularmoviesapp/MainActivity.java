@@ -1,6 +1,7 @@
 package com.github.thomas_p.popularmoviesapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import com.github.thomas_p.popularmoviesapp.utils.MovieNetwork;
 
 import org.json.JSONException;
 import java.io.IOException;
+import java.io.Serializable;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,17 +47,26 @@ public class MainActivity extends AppCompatActivity {
         final int columns = getResources().getInteger(R.integer.gallery_columns);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, columns);
 
+        final Context context = this;
 
-        movieAdapter = new MovieListAdapter();
+        movieAdapter = new MovieListAdapter(new MovieListAdapter.MovieListItemCLickListener() {
+            @Override
+            public void onClick(Movie movie) {
+                Intent detailIntent = new Intent(context, MovieDetailActivity.class);
+                detailIntent.putExtra("movie", (Serializable) movie);
+                detailIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(detailIntent);
+            }
+        });
+        mMovieListRecycler.setHasFixedSize(true);
         mMovieListRecycler.setAdapter(movieAdapter);
         mMovieListRecycler.setLayoutManager(gridLayoutManager);
-
         scrollListener = new EndlessRecyclerViewScrollListener(gridLayoutManager) {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
                 // Triggered only when new data needs to be appended to the list
                 // Add whatever code is needed to append new items to the bottom of the list
-                new FetchAsyncTask().execute(new LoadParams(list_mode, page));
+                new FetchAsyncTask().execute(new LoadParams(list_mode, page+1));
             }
         };
         mMovieListRecycler.addOnScrollListener(scrollListener);
