@@ -10,10 +10,9 @@ import com.github.thomas_p.popularmoviesapp.R;
 import com.github.thomas_p.popularmoviesapp.models.Movie;
 import com.squareup.picasso.Picasso;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
+
 
 
 public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.MovieListAdapterViewHolder> {

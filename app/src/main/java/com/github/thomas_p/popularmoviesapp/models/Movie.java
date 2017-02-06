@@ -4,6 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.io.Serializable;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -11,6 +12,7 @@ import java.util.Date;
 
 public class Movie implements Serializable, Parcelable {
     private static String PRE_POSTER_PATH = "http://image.tmdb.org/t/p/w185/";
+    private static String DATE_FORMAT = "yyyy-MM-dd";
     private boolean isAdult;
     private String posterPath;
     private String overview;
@@ -69,19 +71,39 @@ public class Movie implements Serializable, Parcelable {
     }
 
     protected Movie(Parcel in) {
-        // not needed, while readSerializable
+        isAdult = in.readByte() == 1;
+        posterPath = in.readString();
+        overview = in.readString();
+        // date
+        SimpleDateFormat formatter = new SimpleDateFormat(DATE_FORMAT);
+        try {
+            releaseDate = formatter.parse(in.readString());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        voteAverage = in.readDouble();
+        title = in.readString();
+        id = in.readInt();
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeSerializable(this);
+        dest.writeByte((byte)(isAdult ? 1 : 0));
+        dest.writeString(posterPath);
+        dest.writeString(overview);
+        // date
+        SimpleDateFormat formatter = new SimpleDateFormat(DATE_FORMAT);
+        dest.writeString(formatter.format(releaseDate));
+        dest.writeDouble(voteAverage);
+        dest.writeString(title);
+        dest.writeInt(id);
     }
 
 
     public static final Creator<Movie> CREATOR = new Creator<Movie>() {
         @Override
         public Movie createFromParcel(Parcel in) {
-            return (Movie) in.readSerializable();
+            return new Movie(in);
         }
 
         @Override
