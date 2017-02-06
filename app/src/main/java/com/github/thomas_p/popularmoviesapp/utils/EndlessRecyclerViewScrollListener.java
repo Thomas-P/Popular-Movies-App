@@ -1,3 +1,6 @@
+/**
+ * from: https://github.com/codepath/android_guides/wiki/Endless-Scrolling-with-AdapterViews-and-RecyclerView
+ */
 package com.github.thomas_p.popularmoviesapp.utils;
 
 import android.support.v7.widget.GridLayoutManager;
