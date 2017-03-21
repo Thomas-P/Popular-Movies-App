@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Popular Movies</string>
-    <string name="api_key"></string>
+    <string name="api_key">INSERT API KEY HERE</string>
 
     <string name="error_message_network_failure">No internet connection.</string>
     <string name="error_message_try_again">Try again.</string>
@@ -15,6 +15,25 @@
     <string name="action_sort_by">Sort By</string>
     <string name="action_sort_by_popular">Popularity</string>
     <string name="action_sort_by_top_rated">Top Rated</string>
+    <string name="action_sort_by_favorite">Favorite</string>
 
     <string name="ml_loading_indicator_text">Loading</string>
+    <string name="action_star_movie">Star movie</string>
+
+
+    <string name="config_date_format">yyyy-MM-dd</string>
+
+    <!-- Detail labels -->
+    <string name="md_label_vote">Vote</string>
+    <string name="md_label_run_time">Runtime</string>
+    <string name="md_label_released">Released</string>
+    <string name="md_label_movie_description">Movie description</string>
+    <string name="md_label_trailer">Trailers</string>
+    <string name="md_label_review">Reviews</string>
+    <string name="md_label_author">Author: </string>
+    <string name="md_playtime_minutes">mins</string>
+    <!-- end detail labels -->
+    <string name="md_content_descriptions_movie_poster">Movie poster</string>
+    <string name="md_content_descriptions_movie_background">Movie background poster</string>
+
 </resources>

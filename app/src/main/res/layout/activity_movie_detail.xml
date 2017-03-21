@@ -1,106 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_movie_detail"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.github.thomas_p.popularmoviesapp.MovieDetailActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/movie_detail_image_height">
-            <ImageView
-                android:id="@+id/md_image"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:contentDescription="@string/poster_of" />
-            <TextView
-                android:id="@+id/md_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/title_size"
-                android:layout_alignParentBottom="true"
-                android:textColor="@android:color/white"
-                android:background="#80000000"
-                android:padding="@dimen/md_padding"/>
-        </RelativeLayout>
-        <TextView
+        <android.support.constraint.ConstraintLayout
+            style="@style/MovieDetailTheme"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/md_description"
-            android:padding="@dimen/md_padding"
-            android:textSize="@dimen/text_size"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_margin="@dimen/md_padding"
-            android:background="#fff">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/md_padding"
-                android:text="@string/md_details"
-                android:textSize="@dimen/title_size"
-                android:textStyle="bold"/>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/md_padding"
-                >
-                <!-- Name-->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="start"
-                    android:textSize="@dimen/text_size"
-                    android:text="@string/md_release"
-                    android:textStyle="bold"/>
+            tools:context="com.github.thomas_p.popularmoviesapp.MovieDetailActivity">
 
-                <!-- Amount -->
-                <TextView
-                    android:id="@+id/md_release_date"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="end"
-                    android:textSize="@dimen/text_size"
-                    />
-            </RelativeLayout>
-            <View
-                android:layout_width="match_parent"
+            <include
+                android:id="@+id/ml_error_page"
+                layout="@layout/ml_error_page"
+                android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_weight="1"/>
-            <RelativeLayout
-                android:layout_width="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.5" />
+
+
+            <include
+                android:id="@+id/md_header"
+                layout="@layout/md_header"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/md_padding"
-                >
-                <!-- Name-->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="start"
-                    android:textSize="@dimen/text_size"
-                    android:text="@string/md_votes"
-                    android:textStyle="bold"/>
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <!-- Amount -->
-                <TextView
-                    android:id="@+id/md_vote_average"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="end"
-                    android:textSize="@dimen/text_size"
-                    />
-            </RelativeLayout>
+            <include
+                android:id="@+id/md_meta_data"
+                layout="@layout/md_meta_data"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/md_header" />
 
-        </LinearLayout>
+            <include
+                android:id="@+id/md_description"
+                layout="@layout/md_description"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/md_meta_data" />
 
-    </LinearLayout>
-</ScrollView>
+
+            <ImageView
+                android:id="@+id/divider_1"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintLeft_toRightOf="parent"
+                app:layout_constraintRight_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/md_description"
+                app:srcCompat="@color/dividerColor"
+                tools:ignore="ContentDescription" />
+
+            <include
+                android:id="@+id/md_trailers"
+                layout="@layout/md_trailers"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider_1" />
+
+
+            <include
+                android:id="@+id/md_reviews"
+                layout="@layout/md_reviews"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/md_trailers" />
+
+            <include
+                android:id="@+id/ml_loading_indicator"
+                layout="@layout/md_load_indicator"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0dp"
+                android:layout_marginEnd="0dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginStart="0dp"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent">
+
+            </include>
+
+
+            <!-- @DONE Add Review list -->
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+</layout>
