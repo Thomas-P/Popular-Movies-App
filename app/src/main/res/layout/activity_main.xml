@@ -1,68 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.github.thomas_p.popularmoviesapp.MainActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <RelativeLayout
-        android:id="@+id/rl_error_message"
-        android:visibility="invisible"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/error_message_network_failure"
-            android:textSize="@dimen/title_size"
-            android:textColor="@color/colorAccent"
-            android:textIsSelectable="false"/>
-        <Button
-            android:id="@+id/action_error_try_again"
-            android:layout_marginTop="60sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:layout_centerInParent="true"
-            android:text="@string/error_message_try_again"/>
-    </RelativeLayout>
-
-    <android.support.v7.widget.RecyclerView
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/activity_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/rv_movie_list"
-        android:layout_gravity="end"
-        android:paddingEnd="@dimen/ml_padding"
-        android:paddingRight="@dimen/ml_padding"
-        android:paddingBottom="@dimen/ml_padding"/>
+        tools:context="com.github.thomas_p.popularmoviesapp.MainActivity">
 
-    <FrameLayout
-        android:id="@+id/ml_loading_indicator"
-        android:visibility="gone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#80000000"
-        android:layout_gravity="bottom|center"
-        android:padding="@dimen/ml_padding">
-        <LinearLayout
-            android:layout_width="wrap_content"
+        <include
+            android:id="@+id/ml_error_page"
+            layout="@layout/ml_error_page"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.5" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_movie_list"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/colorAccent"
+            android:paddingBottom="@dimen/ml_padding"
+            android:paddingEnd="@dimen/ml_padding"
+            android:paddingLeft="@dimen/ml_padding"
+            android:paddingRight="@dimen/ml_padding"
+            android:paddingStart="@dimen/ml_padding"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <include
+            android:id="@+id/ml_loading_indicator"
+            layout="@layout/md_load_indicator"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center">
-            <ProgressBar
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/ml_loading_indicator_text"
-                android:textColor="#fff"
-                android:textSize="@dimen/title_size"
-                android:layout_gravity="center_vertical"/>
-        </LinearLayout>
+            android:layout_marginBottom="0dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginStart="0dp"
+            android:visibility="visible"
 
-    </FrameLayout>
-</FrameLayout>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
+
+</layout>
+

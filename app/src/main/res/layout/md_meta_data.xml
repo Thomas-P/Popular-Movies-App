@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/background_header"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="50dp"
+            android:alpha="0.8"
+            android:contentDescription=""
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@color/colorAccent"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/film_poster"
+            android:layout_width="100dp"
+            android:layout_height="150dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:contentDescription="@string/md_content_descriptions_movie_poster"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="@+id/background_header"
+            app:layout_constraintLeft_toLeftOf="@+id/background_header"
+            app:layout_constraintTop_toTopOf="@+id/background_header"
+            app:srcCompat="@android:color/holo_blue_light" />
+
+        <TextView
+            android:id="@+id/label_play_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/md_label_run_time"
+            android:textAppearance="@style/MovieDetailTheme.Label"
+            app:layout_constraintLeft_toRightOf="@+id/film_poster"
+            app:layout_constraintTop_toTopOf="@+id/background_header"
+            tools:text="Playtime" />
+
+        <TextView
+            android:id="@+id/play_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/MovieDetailTheme.Text"
+            app:layout_constraintLeft_toLeftOf="@+id/label_play_time"
+            app:layout_constraintRight_toRightOf="@+id/label_play_time"
+            app:layout_constraintTop_toBottomOf="@+id/label_play_time"
+            tools:text="2:49" />
+
+        <TextView
+            android:id="@+id/label_vote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginStart="16dp"
+            android:text="@string/md_label_vote"
+            android:textAppearance="@style/MovieDetailTheme.Label"
+            app:layout_constraintLeft_toRightOf="@+id/label_play_time"
+            app:layout_constraintRight_toRightOf="@+id/background_header"
+            app:layout_constraintTop_toTopOf="@+id/label_play_time"
+            tools:text="Vote" />
+
+        <TextView
+            android:id="@+id/vote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/MovieDetailTheme.Text"
+            app:layout_constraintLeft_toLeftOf="@+id/label_vote"
+            app:layout_constraintRight_toRightOf="@+id/label_vote"
+            app:layout_constraintTop_toBottomOf="@+id/label_vote"
+            tools:text="5.1" />
+
+        <TextView
+            android:id="@+id/film_tag_line"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:textAppearance="@style/MovieDetailTheme.BigText"
+            app:layout_constraintHorizontal_bias="0.57"
+            app:layout_constraintLeft_toRightOf="@+id/film_poster"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/background_header"
+            tools:text="TagLine" />
+
+
+    </android.support.constraint.ConstraintLayout>
+</layout>
